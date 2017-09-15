@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- newrelic browser agent. REMEMBER TO REPLACE THIS SCRIPT WITH YOUR OWN BROWSER AGENT -->
+  <script src="agent.js"></script>
+  
+  <!-- Ooyala player -->
+  <script src="//player.ooyala.com/core/3b2b9fafa610437faadbcb11db8e9cc6"></script>
+ 
+  <!-- new relic tracker -->
+  <script src="../dist/newrelic-video-ooyala.min.js"></script>
+</head>
+
+<body>
+  <div id="myVideo"></div>
+  
+  <script>
+    OO.ready(function() {
+      window.pp = OO.Player.create('myVideo', 'NzMzJwYzE6prpJIzp0qeJBY1znSbgzXO', {
+        'autoplay': false,
+        'loop': false,
+        'preload': true
+        // 'debug': true
+      })
+    })
+  </script>
+</body>
+
+</html>
