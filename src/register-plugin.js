@@ -2,6 +2,7 @@ import * as nrvideo from 'newrelic-video-core'
 import OoyalaTracker from './tracker'
 
 export class NewrelicAnalyticsFramework {
+  // old JS 3.5 notation enforced by Ooyala :(
   constructor (framework) {
     this.framework = framework
     this.id = null
