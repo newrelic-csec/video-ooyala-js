@@ -2,7 +2,7 @@ import * as nrvideo from 'newrelic-video-core'
 import {version} from '../package.json'
 import OoyalaAdsTracker from './ads'
 
-export default class OoyalaTracker extends nrvideo.Tracker {
+export default class OoyalaTracker extends nrvideo.VideoTracker {
   constructor (player, options) {
     super(null, options)
     this.setAdsTracker(new OoyalaAdsTracker())
@@ -99,6 +99,7 @@ export default class OoyalaTracker extends nrvideo.Tracker {
 
     // switch
     if (!this.adsTracker.state.isRequested) { // not ads
+
       switch (event) {
         case 'video_player_created':
           this.autoplay = param.autoplay || false
@@ -111,6 +112,10 @@ export default class OoyalaTracker extends nrvideo.Tracker {
           this.sendRequest()
           break
 
+        case 'initialPlayStarting':
+          this.sendStart()
+          break
+
         case 'video_buffering_started':
           if (!this.state.isSeeking && param.streamUrl.startsWith(this.src)) {
             this.sendBufferStart()
@@ -118,7 +123,6 @@ export default class OoyalaTracker extends nrvideo.Tracker {
           break
 
         case 'video_buffering_ended':
-          this.sendStart()
           this.sendBufferEnd()
           break
 

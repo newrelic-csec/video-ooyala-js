@@ -10,7 +10,6 @@ export class NewrelicAnalyticsFramework {
 
     this.tracker = new OoyalaTracker()
     nrvideo.Core.addTracker(this.tracker)
-    this.tracker.sendPlayerInit()
 
     this.getName = function () {
       return 'newrelic'
